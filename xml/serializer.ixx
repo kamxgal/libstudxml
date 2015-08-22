@@ -155,26 +155,27 @@ namespace xml
 
   namespace details
   {
-    // Detect whether T defines void operator(A) const.
+    // Detect whether T is callable with argument A.
     //
     template <typename T, typename A>
-    struct is_functor
+    struct is_callable
     {
       typedef char no[1];
       typedef char yes[2];
+      template <typename X> static X declval ();
 
-      template <typename X, X> struct check;
+      template <int> struct check;
 
       template <typename>
       static no& test (...);
 
       template <typename X>
-      static yes& test (check<void (X::*) (A) const, &X::operator ()>*);
+      static yes& test (check<sizeof (declval<X> () (declval<A> ()), 0)>*);
 
       static const bool value = sizeof (test<T> (0)) == sizeof (yes);
     };
 
-    template <typename T, bool = is_functor<T, serializer&>::value>
+    template <typename T, bool = is_callable<const T&, serializer&>::value>
     struct inserter;
 
     template <typename T>

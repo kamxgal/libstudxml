@@ -292,16 +292,11 @@ namespace xml
     std::size_t depth_;
   };
 
-  // Stream-like interface for serializer. If the passed argument
-  // is a function with the void f(serializer&) signature or is a
-  // function object with the void operator() (serializer&) const
-  // operator, then this function (object) is called with the passed
-  // serializer. Otherwise, the argument is passed to the serializer's
-  // characters() function.
+  // Stream-like interface for serializer. If the passed argument is
+  // callable with the serializer as its argument, then this function
+  // (object) is called with the passed serializer. Otherwise, the
+  // argument is passed to the serializer's characters() function.
   //
-  serializer&
-  operator<< (serializer&, void (*func) (serializer&));
-
   template <typename T>
   serializer&
   operator<< (serializer&, const T& value);
