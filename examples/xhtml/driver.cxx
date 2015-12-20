@@ -93,8 +93,10 @@ namespace xhtml
 
     // s << attr << 123 << ~attr;
     //
+    typedef void serialize_function (serializer&);
+
     void operator() (serializer& s) const {s.start_attribute (name);}
-    void (*operator~ ())(serializer& s) const {return &end;}
+    serialize_function* operator~ () const {return &end;}
 
     static void end (serializer& s) {s.end_attribute ();}
   };
