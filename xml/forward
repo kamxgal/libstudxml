@@ -14,6 +14,7 @@ namespace xml
   class qname;
   class parser;
   class serializer;
+  class exception;
 }
 
 #include <xml/details/post.hxx>

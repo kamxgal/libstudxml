@@ -40,7 +40,7 @@ namespace xml
   };
 
   template <>
-  struct LIBSTUDXML_EXPORT default_value_traits<std::string>
+  struct default_value_traits<std::string>
   {
     static std::string
     parse (std::string s, const parser&)

@@ -1,11 +1,16 @@
 # Compiler/linker output.
 #
+*.d
 *.o
-*.o.d
+*.obj
 *.so
+*.dll
 *.a
-*.l
-*.l.cpp-options
+*.lib
+*.exp
+*.exe
+*.exe.dlls/
+*.exe.manifest
 
 # Generated documentation.
 #

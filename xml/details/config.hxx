@@ -5,10 +5,20 @@
 #ifndef XML_DETAILS_CONFIG_HXX
 #define XML_DETAILS_CONFIG_HXX
 
-#ifdef _MSC_VER
-#  include <xml/details/config-vc.h>
+// Note: the same in expat/config.h
+//
+#ifdef LIBSTUDXML_BUILD2
+#  ifdef _MSC_VER
+#    include <xml/details/build2/config-vc.h>
+#  else
+#    include <xml/details/build2/config.h>
+#  endif
 #else
-#  include <xml/details/config.h>
+#  ifdef _MSC_VER
+#    include <xml/details/config-vc.h>
+#  else
+#    include <xml/details/config.h>
+#  endif
 #endif
 
 #endif // XML_DETAILS_CONFIG_HXX

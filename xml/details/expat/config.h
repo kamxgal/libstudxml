@@ -1,10 +1,18 @@
 #ifndef EXPAT_CONFIG_H
 #define EXPAT_CONFIG_H
 
-#ifdef _MSC_VER
-#  include <xml/details/config-vc.h>
+#ifdef LIBSTUDXML_BUILD2
+#  ifdef _MSC_VER
+#    include <xml/details/build2/config-vc.h>
+#  else
+#    include <xml/details/build2/config.h>
+#  endif
 #else
-#  include <xml/details/config.h>
+#  ifdef _MSC_VER
+#    include <xml/details/config-vc.h>
+#  else
+#    include <xml/details/config.h>
+#  endif
 #endif
 
 #define BYTEORDER LIBSTUDXML_BYTEORDER

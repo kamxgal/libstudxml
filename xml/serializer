@@ -21,10 +21,9 @@
 
 namespace xml
 {
-  class serializer;
-
-  struct LIBSTUDXML_EXPORT serialization: exception
+  class LIBSTUDXML_EXPORT serialization: public exception
   {
+  public:
     virtual
     ~serialization () throw ();
 

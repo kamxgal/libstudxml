@@ -77,8 +77,7 @@ namespace xml
 
   // Print the string representation ([<namespace>#]<name>).
   //
-  LIBSTUDXML_EXPORT
-  std::ostream&
+  LIBSTUDXML_EXPORT std::ostream&
   operator<< (std::ostream&, const qname&);
 }
 

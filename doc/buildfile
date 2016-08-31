@@ -1,0 +1,9 @@
+# file      : doc/buildfile
+# copyright : Copyright (c) 2013-2014 Code Synthesis Tools CC
+# license   : MIT; see accompanying LICENSE file
+
+define css: file
+css{*}: extension = css
+css{*}: install = doc/
+
+./: doc{intro.xhtml} css{default}

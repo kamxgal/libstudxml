@@ -9,11 +9,9 @@
 
 #include <exception>
 
-#include <xml/details/export.hxx>
-
 namespace xml
 {
-  struct LIBSTUDXML_EXPORT exception: std::exception {};
+  class exception: public std::exception {};
 }
 
 #include <xml/details/post.hxx>

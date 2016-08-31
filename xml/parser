@@ -36,10 +36,9 @@
 
 namespace xml
 {
-  class parser;
-
-  struct LIBSTUDXML_EXPORT parsing: exception
+  class LIBSTUDXML_EXPORT parsing: public exception
   {
+  public:
     virtual
     ~parsing () throw ();
 
@@ -65,7 +64,7 @@ namespace xml
     virtual const char*
     what () const throw ();
 
-    private:
+  private:
     void
     init ();
 
@@ -460,8 +459,7 @@ namespace xml
     pop_element ();
   };
 
-  LIBSTUDXML_EXPORT
-  std::ostream&
+  LIBSTUDXML_EXPORT std::ostream&
   operator<< (std::ostream&, parser::event_type);
 }
 
