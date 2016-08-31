@@ -17,29 +17,6 @@ namespace xml
 {
   // parsing
   //
-  parsing::
-  ~parsing () throw () {}
-
-  parsing::
-  parsing (const string& n,
-           unsigned long long l,
-           unsigned long long c,
-           const string& d)
-      : name_ (n), line_ (l), column_ (c), description_ (d)
-  {
-    init ();
-  }
-
-  parsing::
-  parsing (const parser& p, const std::string& d)
-      : name_ (p.input_name ()),
-        line_ (p.line ()),
-        column_ (p.column ()),
-        description_ (d)
-  {
-    init ();
-  }
-
   void parsing::
   init ()
   {
@@ -48,12 +25,6 @@ namespace xml
       os << name_ << ':';
     os << line_ << ':' << column_ << ": error: " << description_;
     what_ = os.str ();
-  }
-
-  char const* parsing::
-  what () const throw ()
-  {
-    return what_.c_str ();
   }
 
   // parser::event_type

@@ -13,7 +13,8 @@
 #include <iosfwd>
 #include <cstddef> // std::size_t
 
-#include <xml/details/config.hxx> // LIBSTUDXML_EXTERNAL_EXPAT
+#include <xml/details/config.hxx> // STUDXML_NOTHROW_NOEXCEPT,
+                                  // LIBSTUDXML_EXTERNAL_EXPAT
 
 #ifndef LIBSTUDXML_EXTERNAL_EXPAT
 #  include <xml/details/expat/expat.h>
@@ -36,18 +37,18 @@
 
 namespace xml
 {
-  class LIBSTUDXML_EXPORT parsing: public exception
+  class parsing: public exception
   {
   public:
     virtual
-    ~parsing () throw ();
+    ~parsing () STUDXML_NOTHROW_NOEXCEPT {}
 
     parsing (const std::string& name,
              unsigned long long line,
              unsigned long long column,
              const std::string& description);
 
-    parsing (const parser&, const std::string& description);
+    parsing (const parser& p, const std::string& description);
 
     const std::string&
     name () const {return name_;}
@@ -62,10 +63,10 @@ namespace xml
     description () const {return description_;}
 
     virtual const char*
-    what () const throw ();
+    what () const STUDXML_NOTHROW_NOEXCEPT {return what_.c_str ();}
 
   private:
-    void
+    LIBSTUDXML_EXPORT void
     init ();
 
   private:

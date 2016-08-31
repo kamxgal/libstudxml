@@ -8,6 +8,30 @@
 
 namespace xml
 {
+  // parsing
+  //
+  inline parsing::
+  parsing (const std::string& n,
+           unsigned long long l,
+           unsigned long long c,
+           const std::string& d)
+      : name_ (n), line_ (l), column_ (c), description_ (d)
+  {
+    init ();
+  }
+
+  inline parsing::
+  parsing (const parser& p, const std::string& d)
+      : name_ (p.input_name ()),
+        line_ (p.line ()),
+        column_ (p.column ()),
+        description_ (d)
+  {
+    init ();
+  }
+
+  // parser
+  //
   inline parser::
   parser (std::istream& is, const std::string& iname, feature_type f)
       : size_ (0), iname_ (iname), feature_ (f)

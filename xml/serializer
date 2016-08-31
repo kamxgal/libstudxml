@@ -17,20 +17,19 @@
 #include <xml/qname>
 #include <xml/exception>
 
+#include <xml/details/config.hxx> // STUDXML_NOTHROW_NOEXCEPT
 #include <xml/details/export.hxx>
 
 namespace xml
 {
-  class LIBSTUDXML_EXPORT serialization: public exception
+  class serialization: public exception
   {
   public:
     virtual
-    ~serialization () throw ();
+    ~serialization () STUDXML_NOTHROW_NOEXCEPT {}
 
-    serialization (const std::string& name,
-                   const std::string& description);
-
-    serialization (const serializer&, const std::string& description);
+    serialization (const std::string& name, const std::string& description);
+    serialization (const serializer& s, const std::string& description);
 
     const std::string&
     name () const {return name_;}
@@ -39,10 +38,10 @@ namespace xml
     description () const {return description_;}
 
     virtual const char*
-    what () const throw ();
+    what () const STUDXML_NOTHROW_NOEXCEPT {return what_.c_str ();}
 
   private:
-    void
+    LIBSTUDXML_EXPORT void
     init ();
 
   private:

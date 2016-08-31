@@ -6,6 +6,24 @@
 
 namespace xml
 {
+  // serialization
+  //
+  inline serialization::
+  serialization (const std::string& name, const std::string& d)
+      : name_ (name), description_ (d)
+  {
+    init ();
+  }
+
+  inline serialization::
+  serialization (const serializer& s, const std::string& d)
+      : name_ (s.output_name ()), description_ (d)
+  {
+    init ();
+  }
+
+  // serializer
+  //
   inline void serializer::
   start_element (const qname_type& qname)
   {

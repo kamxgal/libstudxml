@@ -13,23 +13,6 @@ namespace xml
 {
   // serialization
   //
-  serialization::
-  ~serialization () throw () {}
-
-  serialization::
-  serialization (const string& n, const string& d)
-      : name_ (n), description_ (d)
-  {
-    init ();
-  }
-
-  serialization::
-  serialization (const serializer& s, const std::string& d)
-      : name_ (s.output_name ()), description_ (d)
-  {
-    init ();
-  }
-
   void serialization::
   init ()
   {
@@ -41,12 +24,6 @@ namespace xml
 
     what_ += "error: ";
     what_ += description_;
-  }
-
-  char const* serialization::
-  what () const throw ()
-  {
-    return what_.c_str ();
   }
 
   // serializer
