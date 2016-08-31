@@ -7,6 +7,8 @@
 
 #include <xml/details/pre.hxx>
 
+#include <xml/version>
+
 namespace xml
 {
   class qname;

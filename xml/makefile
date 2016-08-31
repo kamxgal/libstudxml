@@ -5,7 +5,8 @@
 include $(dir $(lastword $(MAKEFILE_LIST)))../build/bootstrap.make
 
 sources := qname.cxx parser.cxx serializer.cxx value-traits.cxx
-xml_headers := content exception forward qname parser serializer value-traits
+xml_headers := content exception forward qname parser serializer value-traits \
+version
 
 # Expat.
 #
