@@ -9,4 +9,5 @@ changes-file: NEWS
 url: http://www.codesynthesis.com/projects/libstudxml/
 email: studxml-users@codesynthesis.com; Mailing list
 requires: c++11
-requires: build2 >= 0.4.0
+depends: * build2 >= 0.4.0
+depends: * bpkg >= 0.4.0
