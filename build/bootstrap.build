@@ -6,7 +6,7 @@ project = libstudxml
 
 using build@0.4.0
 
-version = 1.1.0-a4
+version = 1.1.0-a5
 
 abi_major = 1
 abi_minor = 1
