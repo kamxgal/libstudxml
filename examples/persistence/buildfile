@@ -1,0 +1,4 @@
+import libs = libstudxml%lib{studxml}
+
+exe{driver}: cxx{driver position} $libs
+exe{driver}: test.input = position.xml

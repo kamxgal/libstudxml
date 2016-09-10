@@ -1,0 +1,5 @@
+d = hybrid/ inheritance/ performance/ persistence/ processing/ roundtrip/ \
+    xhtml/
+
+./: $d
+include $d

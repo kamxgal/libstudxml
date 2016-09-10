@@ -1,0 +1,23 @@
+# @@ Hack until build2 supports multiple tests. Also remove .gitignore.
+#
+./: exe{attr-driver} exe{char-driver} exe{fup1-driver} exe{fup2-driver} \
+    exe{ns-driver}
+
+exe{attr-driver}: cxx{driver}
+exe{attr-driver}: test.roundtrip = attribute.xml
+
+exe{char-driver}: cxx{driver}
+exe{char-driver}: test.roundtrip = characters.xml
+
+exe{fup1-driver}: cxx{driver}
+exe{fup1-driver}: test.roundtrip = followup-1.xml
+
+exe{fup2-driver}: cxx{driver}
+exe{fup2-driver}: test.roundtrip = followup-2.xml
+
+exe{ns-driver}: cxx{driver}
+exe{ns-driver}: test.roundtrip = namespace.xml
+
+import libs = libstudxml%lib{studxml}
+
+exe{attr-driver char-driver fup1-driver fup2-driver ns-driver}: $libs

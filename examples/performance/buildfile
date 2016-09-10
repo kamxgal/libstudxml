@@ -1,0 +1,4 @@
+import libs = libstudxml%lib{studxml}
+
+exe{driver}: cxx{driver time} $libs
+exe{driver}: test.input = test-50k.xml

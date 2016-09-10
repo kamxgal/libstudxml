@@ -1,0 +1,3 @@
+import libs = libstudxml%lib{studxml}
+
+exe{driver}: cxx{driver} $libs
