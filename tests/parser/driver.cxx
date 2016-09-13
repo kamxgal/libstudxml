@@ -41,14 +41,13 @@ main ()
   try
   {
     istringstream is ("<root/>");
-    is.exceptions (ios_base::badbit | ios_base::failbit);
     parser p (is, "test");
 
     is.setstate (ios_base::badbit);
     p.next ();
     assert (false);
   }
-  catch (const ios_base::failure&)
+  catch (const xml::exception&)
   {
   }
 

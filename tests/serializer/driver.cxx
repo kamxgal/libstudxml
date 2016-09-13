@@ -37,7 +37,6 @@ main ()
   try
   {
     ostringstream os;
-    os.exceptions (ios_base::badbit | ios_base::failbit);
     serializer s (os, "test");
 
     s.start_element ("root");
@@ -46,7 +45,7 @@ main ()
     s.characters ("two");
     assert (false);
   }
-  catch (const ios_base::failure&)
+  catch (const xml::exception&)
   {
   }
 
