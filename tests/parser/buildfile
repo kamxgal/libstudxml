@@ -1,3 +1,7 @@
+# file      : tests/parser/buildfile
+# copyright : Copyright (c) 2013-2014 Code Synthesis Tools CC
+# license   : MIT; see accompanying LICENSE file
+
 import libs = libstudxml%lib{studxml}
 
 exe{driver}: cxx{driver} $libs

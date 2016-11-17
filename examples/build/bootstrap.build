@@ -1,3 +1,7 @@
+# file      : examples/build/bootstrap.build
+# copyright : Copyright (c) 2013-2014 Code Synthesis Tools CC
+# license   : MIT; see accompanying LICENSE file
+
 project = # Unnamed subproject.
 
 using config

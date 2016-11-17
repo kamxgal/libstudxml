@@ -1,4 +1,8 @@
+# file      : examples/hybrid/buildfile
+# copyright : Copyright (c) 2013-2014 Code Synthesis Tools CC
+# license   : MIT; see accompanying LICENSE file
+
 import libs = libstudxml%lib{studxml}
 
-exe{driver}: cxx{dom driver} $libs
+exe{driver}: {cxx hxx}{dom} cxx{driver} $libs doc{README}
 exe{driver}: test.input = position.xml

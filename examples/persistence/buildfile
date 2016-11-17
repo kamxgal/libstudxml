@@ -1,4 +1,8 @@
+# file      : examples/persistence/buildfile
+# copyright : Copyright (c) 2013-2014 Code Synthesis Tools CC
+# license   : MIT; see accompanying LICENSE file
+
 import libs = libstudxml%lib{studxml}
 
-exe{driver}: cxx{driver position} $libs
+exe{driver}: cxx{driver} {cxx hxx}{position} $libs doc{README}
 exe{driver}: test.input = position.xml

@@ -1,3 +1,7 @@
+# file      : examples/build/root.build
+# copyright : Copyright (c) 2013-2014 Code Synthesis Tools CC
+# license   : MIT; see accompanying LICENSE file
+
 cxx.std = 11
 
 using cxx

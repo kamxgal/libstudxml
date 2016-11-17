@@ -1,3 +1,7 @@
+# file      : tests/roundtrip/buildfile
+# copyright : Copyright (c) 2013-2014 Code Synthesis Tools CC
+# license   : MIT; see accompanying LICENSE file
+
 # @@ Hack until build2 supports multiple tests. Also remove .gitignore.
 #
 ./: exe{attr-driver} exe{char-driver} exe{fup1-driver} exe{fup2-driver} \
