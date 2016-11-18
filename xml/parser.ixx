@@ -73,6 +73,12 @@ namespace xml
     return value_traits<T>::parse (value (), *this);
   }
 
+  inline const parser::element_entry* parser::
+  get_element () const
+  {
+    return element_state_.empty () ? 0 : get_element_ ();
+  }
+
   inline const std::string& parser::
   attribute (const std::string& n) const
   {
@@ -134,32 +140,6 @@ namespace xml
   next_expect (event_type e, const std::string& n)
   {
     next_expect (e, std::string (), n);
-  }
-
-  inline void parser::
-  next_expect (event_type e, const qname_type& qn, content_type c)
-  {
-    next_expect (e, qn);
-    assert (e == start_element);
-    content (c);
-  }
-
-  inline void parser::
-  next_expect (event_type e, const std::string& n, content_type c)
-  {
-    next_expect (e, std::string (), n);
-    assert (e == start_element);
-    content (c);
-  }
-
-  inline void parser::
-  next_expect (event_type e,
-               const std::string& ns, const std::string& n,
-               content_type c)
-  {
-    next_expect (e, ns, n);
-    assert (e == start_element);
-    content (c);
   }
 
   template <typename T>
@@ -232,9 +212,29 @@ namespace xml
       : content_type (content_type::mixed);
   }
 
-  inline const parser::element_entry* parser::
-  get_element () const
+  inline void parser::
+  next_expect (event_type e, const qname_type& qn, content_type c)
   {
-    return element_state_.empty () ? 0 : get_element_ ();
+    next_expect (e, qn);
+    assert (e == start_element);
+    content (c);
+  }
+
+  inline void parser::
+  next_expect (event_type e, const std::string& n, content_type c)
+  {
+    next_expect (e, std::string (), n);
+    assert (e == start_element);
+    content (c);
+  }
+
+  inline void parser::
+  next_expect (event_type e,
+               const std::string& ns, const std::string& n,
+               content_type c)
+  {
+    next_expect (e, ns, n);
+    assert (e == start_element);
+    content (c);
   }
 }
