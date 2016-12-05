@@ -57,11 +57,11 @@ else
 # We are a mixed C/C++ library, though C is implementatio-only, kind of: we
 # need headers but not symbols.
 #
-cc.poptions =+ -I$src_root -DLIBSTUDXML_BUILD2
+cc.poptions =+ "-I$src_root" -DLIBSTUDXML_BUILD2
 obja{*}: cc.poptions += -DLIBSTUDXML_STATIC_BUILD
 objs{*}: cc.poptions += -DLIBSTUDXML_SHARED_BUILD
 
-lib{studxml}: cc.export.poptions = -I$src_root -DLIBSTUDXML_BUILD2
+lib{studxml}: cc.export.poptions = "-I$src_root" -DLIBSTUDXML_BUILD2
 liba{studxml}: cc.export.poptions += -DLIBSTUDXML_STATIC
 libs{studxml}: cc.export.poptions += -DLIBSTUDXML_SHARED
 
