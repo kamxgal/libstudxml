@@ -13,24 +13,25 @@
 #  define LIBSTUDXML_BUILD2
 #endif
 
-#ifdef _WIN32
-#  ifndef BYTE_ORDER
-#    define BIG_ENDIAN    4321
-#    define LITTLE_ENDIAN 1234
-#    define BYTE_ORDER    LITTLE_ENDIAN
-#  endif
+#ifdef __FreeBSD__
+#  include <sys/endian.h> /* BYTE_ORDER */
 #else
-#  include <sys/param.h>  /* BYTE_ORDER/__BYTE_ORDER, BSD */
-#  ifdef BSD
-#    include <sys/endian.h> /* BYTE_ORDER */
-#  endif
-#  ifndef BYTE_ORDER
-#    ifdef __BYTE_ORDER
-#      define BYTE_ORDER    __BYTE_ORDER
-#      define BIG_ENDIAN    __BIG_ENDIAN
-#      define LITTLE_ENDIAN __LITTLE_ENDIAN
-#    else
-#      error no BYTE_ORDER/__BYTE_ORDER define
+#  if defined(_WIN32)
+#    ifndef BYTE_ORDER
+#      define BIG_ENDIAN    4321
+#      define LITTLE_ENDIAN 1234
+#      define BYTE_ORDER    LITTLE_ENDIAN
+#    endif
+#  else
+#    include <sys/param.h>  /* BYTE_ORDER/__BYTE_ORDER */
+#    ifndef BYTE_ORDER
+#      ifdef __BYTE_ORDER
+#        define BYTE_ORDER    __BYTE_ORDER
+#        define BIG_ENDIAN    __BIG_ENDIAN
+#        define LITTLE_ENDIAN __LITTLE_ENDIAN
+#      else
+#        error no BYTE_ORDER/__BYTE_ORDER define
+#      endif
 #    endif
 #  endif
 #endif
