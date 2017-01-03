@@ -1,5 +1,5 @@
 dnl file      : m4/static-lib.m4
-dnl copyright : Copyright (c) 2013-2014 Code Synthesis Tools CC
+dnl copyright : Copyright (c) 2013-2017 Code Synthesis Tools CC
 dnl license   : MIT; see accompanying LICENSE file
 dnl
 dnl STATIC_LIB(MACRO, DESCRIPTION)

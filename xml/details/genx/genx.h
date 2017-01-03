@@ -3,7 +3,7 @@
  */
 
 /*
- * Copyright (c) 2007-2013 Code Synthesis Tools CC.
+ * Copyright (c) 2007-2017 Code Synthesis Tools CC.
  * Copyright (c) 2004 by Tim Bray and Sun Microsystems.
  *
  * For copying permission, see the accompanying COPYING file.

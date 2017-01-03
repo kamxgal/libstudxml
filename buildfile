@@ -1,5 +1,5 @@
 # file      : buildfile
-# copyright : Copyright (c) 2013-2014 Code Synthesis Tools CC
+# copyright : Copyright (c) 2013-2017 Code Synthesis Tools CC
 # license   : MIT; see accompanying LICENSE file
 
 d = xml/ examples/ tests/ doc/

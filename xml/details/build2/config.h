@@ -1,5 +1,5 @@
 /* file      : xml/details/build2/config.h
- * copyright : Copyright (c) 2013-2014 Code Synthesis Tools CC
+ * copyright : Copyright (c) 2013-2017 Code Synthesis Tools CC
  * license   : MIT; see accompanying LICENSE file
  */
 
