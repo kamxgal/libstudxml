@@ -8,6 +8,7 @@ description-file: README
 changes-file: NEWS
 url: http://www.codesynthesis.com/projects/libstudxml/
 email: studxml-users@codesynthesis.com; Mailing list
+build-email: builds@codesynthesis.com
 requires: c++11
 depends: * build2 >= 0.4.0
 depends: * bpkg >= 0.4.0
