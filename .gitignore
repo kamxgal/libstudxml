@@ -24,3 +24,7 @@
 # Generated .gitignore files.
 #
 .gitignore
+
+# Generated version.
+#
+version

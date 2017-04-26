@@ -4,22 +4,7 @@
 
 project = libstudxml
 
-using build@0.4.0
-
-version = 1.1.0-a5
-
-abi_major = 1
-abi_minor = 1
-abi_patch = 0
-abi_prerelease = true
-
-revision = 0
-
-dist.package = $project-$version
-
-if ($revision != 0)
-  dist.package += +$revision
-
+using version
 using config
 using dist
 using test

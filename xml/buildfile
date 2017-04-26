@@ -43,16 +43,19 @@ details/genx/c{ genx       } \
 details/genx/h{ genx       } \
 details/genx/doc{LICENSE README}
 
+hxx{version}: in{version} $src_root/file{manifest}
+hxx{version}: dist = true
+
 details/genx/doc{README}@./: install = false
 details/genx/doc{LICENSE}@./: install = doc/GENX-LICENSE
 
 # For pre-releases use the complete version to make sure they cannot be used
 # in place of another pre-release or the final version.
 #
-if $abi_prerelease
-  lib{studxml}: bin.lib.version = @-$version
+if $version.pre_release
+  lib{studxml}: bin.lib.version = @"-$version.project_id"
 else
-  lib{studxml}: bin.lib.version = @-$abi_major.$abi_minor
+  lib{studxml}: bin.lib.version = @"-$version.major.$version.minor"
 
 # We are a mixed C/C++ library, though C is implementatio-only, kind of: we
 # need headers but not symbols.
