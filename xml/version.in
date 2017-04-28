@@ -1,4 +1,4 @@
-// file      : xml/version -*- C++ -*-
+// file      : xml/version.in -*- C++ -*-
 // copyright : Copyright (c) 2013-2017 Code Synthesis Tools CC
 // license   : MIT; see accompanying LICENSE file
 
@@ -24,7 +24,6 @@
 // 3.0.0-b.2    0029999995020
 // 2.2.0-a.1.z  0020019990011
 //
-
 #define LIBSTUDXML_VERSION       $libstudxml.version.project_number$ULL
 #define LIBSTUDXML_VERSION_STR   "$libstudxml.version.project$"
 #define LIBSTUDXML_VERSION_ID    "$libstudxml.version.project_id$"
