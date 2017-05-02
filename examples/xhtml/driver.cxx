@@ -3,7 +3,7 @@
 
 #include <iostream>
 
-#include <xml/serializer>
+#include <libstudxml/serializer.hxx>
 
 using namespace std;
 using namespace xml;

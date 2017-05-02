@@ -8,8 +8,8 @@
 #include <string>
 #include <vector>
 
-#include <xml/qname>
-#include <xml/forward>
+#include <libstudxml/qname.hxx>
+#include <libstudxml/forward.hxx>
 
 // A simple, DOM-like in-memory representation of raw XML. It only supports
 // empty, simple, and complex content (no mixed content) and is not

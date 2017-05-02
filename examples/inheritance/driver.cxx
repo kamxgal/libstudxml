@@ -4,8 +4,8 @@
 #include <fstream>
 #include <iostream>
 
-#include <xml/parser>
-#include <xml/serializer>
+#include <libstudxml/parser.hxx>
+#include <libstudxml/serializer.hxx>
 
 #include "position.hxx"
 

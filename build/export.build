@@ -4,7 +4,7 @@
 
 $out_root/:
 {
-  include xml/
+  include libstudxml/
 }
 
-export $out_root/xml/lib{studxml}
+export $out_root/libstudxml/lib{studxml}

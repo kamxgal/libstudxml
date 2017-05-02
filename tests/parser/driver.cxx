@@ -12,7 +12,7 @@
 #include <iostream>
 #include <sstream>
 
-#include <xml/parser>
+#include <libstudxml/parser.hxx>
 
 using namespace std;
 using namespace xml;

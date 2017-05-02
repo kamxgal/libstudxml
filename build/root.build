@@ -6,7 +6,7 @@ cxx.std = 11
 
 using cxx
 
-hxx{*}: extension =
+hxx{*}: extension = hxx
 cxx{*}: extension = cxx
 ixx{*}: extension = ixx
 txx{*}: extension = txx
