@@ -2,8 +2,6 @@
 # copyright : Copyright (c) 2013-2017 Code Synthesis Tools CC
 # license   : MIT; see accompanying LICENSE file
 
-d = hybrid/ inheritance/ performance/ persistence/ processing/ roundtrip/ \
-    xhtml/
+./: hybrid/ inheritance/ performance/ persistence/ processing/ roundtrip/ \
+    xhtml/ doc{README}
 
-./: $d doc{README}
-include $d

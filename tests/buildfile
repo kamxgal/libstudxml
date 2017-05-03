@@ -2,6 +2,4 @@
 # copyright : Copyright (c) 2013-2017 Code Synthesis Tools CC
 # license   : MIT; see accompanying LICENSE file
 
-d = parser/ roundtrip/ serializer/
-./: $d
-include $d
+./: parser/ roundtrip/ serializer/

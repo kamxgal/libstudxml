@@ -5,8 +5,6 @@
 #ifndef LIBSTUDXML_DETAILS_EXPORT_HXX
 #define LIBSTUDXML_DETAILS_EXPORT_HXX
 
-#include <libstudxml/details/config.hxx>
-
 // Normally we don't export class templates (but do complete specializations),
 // inline functions, and classes with only inline member functions. Exporting
 // classes that inherit from non-exported/imported bases (e.g., std::string)
@@ -14,8 +12,6 @@
 // export. Also, MinGW GCC doesn't like seeing non-exported function being
 // used before their inline definition. The workaround is to reorder code. In
 // the end it's all trial and error.
-
-#ifdef LIBSTUDXML_BUILD2
 
 #if defined(LIBSTUDXML_STATIC)         // Using static.
 #  define LIBSTUDXML_EXPORT
@@ -41,35 +37,5 @@
 //
 #  define LIBSTUDXML_EXPORT            // Using static or shared.
 #endif
-
-#else // LIBSTUDXML_BUILD2
-
-#ifdef LIBSTUDXML_STATIC_LIB
-#  define LIBSTUDXML_EXPORT
-#else
-#  ifdef _WIN32
-#    ifdef _MSC_VER
-#      ifdef LIBSTUDXML_DYNAMIC_LIB
-#        define LIBSTUDXML_EXPORT __declspec(dllexport)
-#      else
-#        define LIBSTUDXML_EXPORT __declspec(dllimport)
-#      endif
-#    else
-#      ifdef LIBSTUDXML_DYNAMIC_LIB
-#        ifdef DLL_EXPORT
-#          define LIBSTUDXML_EXPORT __declspec(dllexport)
-#        else
-#          define LIBSTUDXML_EXPORT
-#        endif
-#      else
-#        define LIBSTUDXML_EXPORT __declspec(dllimport)
-#      endif
-#    endif
-#  else
-#    define LIBSTUDXML_EXPORT
-#  endif
-#endif
-
-#endif // LIBSTUDXML_BUILD2
 
 #endif // LIBSTUDXML_DETAILS_EXPORT_HXX

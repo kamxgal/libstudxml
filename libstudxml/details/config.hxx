@@ -31,20 +31,10 @@
 #  define STUDXML_NOTHROW_NOEXCEPT throw()
 #endif
 
-// Note: the same in expat/config.h
-//
-#ifdef LIBSTUDXML_BUILD2
-#  ifdef _MSC_VER
-#    include <libstudxml/details/build2/config-vc.h>
-#  else
-#    include <libstudxml/details/build2/config.h>
-#  endif
+#ifdef _MSC_VER
+#  include <libstudxml/details/config-vc.h>
 #else
-#  ifdef _MSC_VER
-#    include <libstudxml/details/config-vc.h>
-#  else
-#    include <libstudxml/details/config.h>
-#  endif
+#  include <libstudxml/details/config.h>
 #endif
 
 #endif // LIBSTUDXML_DETAILS_CONFIG_HXX

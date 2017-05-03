@@ -8,11 +8,6 @@
 #ifndef LIBSTUDXML_DETAILS_CONFIG_H
 #define LIBSTUDXML_DETAILS_CONFIG_H
 
-/* Define LIBSTUDXML_BUILD2 for the installed case. */
-#ifndef LIBSTUDXML_BUILD2
-#  define LIBSTUDXML_BUILD2
-#endif
-
 #ifdef __FreeBSD__
 #  include <sys/endian.h> /* BYTE_ORDER */
 #else

@@ -15,8 +15,8 @@ lib{studxml}:                                    \
        details/{hxx            }{ export.hxx   } \
        details/{hxx            }{ post.hxx     } \
        details/{hxx            }{ pre.hxx      } \
-details/build2/{h              }{ config       } \
-details/build2/{h              }{ config-vc    }
+       details/{h              }{ config       } \
+       details/{h              }{ config-vc    }
 
 # Expat. Note that we treat a whole bunch of its sources as files since they
 # are private and #include's (including .c file).
@@ -60,11 +60,11 @@ else
 # We are a mixed C/C++ library, though C is implementatio-only, kind of: we
 # need headers but not symbols.
 #
-cc.poptions =+ "-I$out_root" "-I$src_root" -DLIBSTUDXML_BUILD2
+cc.poptions =+ "-I$out_root" "-I$src_root"
 obja{*}: cc.poptions += -DLIBSTUDXML_STATIC_BUILD
 objs{*}: cc.poptions += -DLIBSTUDXML_SHARED_BUILD
 
-lib{studxml}: cc.export.poptions = "-I$out_root" "-I$src_root" -DLIBSTUDXML_BUILD2
+lib{studxml}: cc.export.poptions = "-I$out_root" "-I$src_root"
 liba{studxml}: cc.export.poptions += -DLIBSTUDXML_STATIC
 libs{studxml}: cc.export.poptions += -DLIBSTUDXML_SHARED
 
@@ -73,19 +73,3 @@ libs{studxml}: cc.export.poptions += -DLIBSTUDXML_SHARED
 #
 install.include = $install.include/libstudxml/
 install.include.subdirs = true # Recreate subdirectories.
-
-# We want these to be picked up even when LIBSTUDXML_BUILD2 is not defined.
-#
-details/build2/:
-{
-  if ($cxx.id == "msvc")
-  {
-    h{config}@./:    install = false
-    h{config-vc}@./: install = $install.include/details/
-  }
-  else
-  {
-    h{config}@./:    install = $install.include/details/
-    h{config-vc}@./: install = false
-  }
-}
