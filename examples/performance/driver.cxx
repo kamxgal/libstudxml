@@ -29,7 +29,7 @@ main (int argc, char* argv[])
     ifs.exceptions (ios_base::failbit);
     ifs.open (argv[1], ios::in | ios::ate);
 
-    size_t size (ifs.tellg ());
+    size_t size (static_cast<size_t> (ifs.tellg ()));
     ifs.seekg (0, ios::beg);
 
     char* buf = new char[size];
