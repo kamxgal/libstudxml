@@ -2,6 +2,4 @@
 # copyright : Copyright (c) 2013-2017 Code Synthesis Tools CC
 # license   : MIT; see accompanying LICENSE file
 
-./: hybrid/ inheritance/ performance/ persistence/ processing/ roundtrip/ \
-    xhtml/ doc{README}
-
+./: {*/ -build/} doc{README}

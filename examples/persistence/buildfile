@@ -4,5 +4,5 @@
 
 import libs = libstudxml%lib{studxml}
 
-exe{driver}: cxx{driver} {cxx hxx}{position} $libs doc{README}
+exe{driver}: {hxx cxx}{*} $libs doc{README}
 exe{driver}: test.input = position.xml

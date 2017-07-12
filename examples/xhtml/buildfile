@@ -4,4 +4,4 @@
 
 import libs = libstudxml%lib{studxml}
 
-exe{driver}: cxx{driver} $libs doc{README}
+exe{driver}: {hxx cxx}{*} $libs doc{README}

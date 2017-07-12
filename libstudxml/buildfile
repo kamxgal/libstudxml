@@ -2,51 +2,31 @@
 # copyright : Copyright (c) 2013-2017 Code Synthesis Tools CC
 # license   : MIT; see accompanying LICENSE file
 
-lib{studxml}:                                    \
-               {hxx            }{ content      } \
-               {hxx            }{ exception    } \
-               {hxx            }{ forward      } \
-               {hxx ixx txx cxx}{ parser       } \
-               {hxx         cxx}{ qname        } \
-               {hxx ixx     cxx}{ serializer   } \
-               {hxx     txx cxx}{ value-traits } \
-               {hxx            }{ version      } \
-       details/{hxx            }{ config.hxx   } \
-       details/{hxx            }{ export.hxx   } \
-       details/{hxx            }{ post.hxx     } \
-       details/{hxx            }{ pre.hxx      } \
-       details/{h              }{ config       } \
-       details/{h              }{ config-vc    }
+lib{studxml}: {hxx ixx txx cxx}{** -version} {hxx}{version} \
+      details/{h}{config*}
 
 # Expat. Note that we treat a whole bunch of its sources as files since they
 # are private and #include's (including .c file).
 #
-lib{studxml}:                     \
-details/expat/h{ expat          } \
-details/expat/h{ expat_external } \
-details/expat/c{ xmlparse       } \
-details/expat/c{ xmlrole        } \
-details/expat/c{ xmltok         } \
-details/expat/file{ ascii.h asciitab.h config.h iasciitab.h internal.h \
-latin1tab.h nametab.h utf8tab.h xmlrole.h xmltok.h xmltok_impl.c \
-xmltok_impl.h xmltok_ns.c} \
-details/expat/doc{LICENSE README}
+lib{studxml}: details/expat/{                                                 \
+   h{expat expat_external}                                                    \
+   c{xmlparse xmlrole xmltok}                                                 \
+file{ascii.h asciitab.h config.h iasciitab.h internal.h latin1tab.h nametab.h \
+     utf8tab.h xmlrole.h xmltok.h xmltok_impl.h xmltok_impl.c xmltok_ns.c}    \
+ doc{LICENSE README}                                                          \
+}
 
-details/expat/doc{README}@./: install = false
+details/expat/doc{README}@./:  install = false
 details/expat/doc{LICENSE}@./: install = doc/EXPAT-LICENSE
 
 # Genx.
 #
-lib{studxml}:                \
-details/genx/c{ char-props } \
-details/genx/c{ genx       } \
-details/genx/h{ genx       } \
-details/genx/doc{LICENSE README}
+lib{studxml}: details/genx/{h{*} c{*} doc{LICENSE README}}
 
 hxx{version}: in{version} $src_root/file{manifest}
 hxx{version}: dist = true
 
-details/genx/doc{README}@./: install = false
+details/genx/doc{README}@./:  install = false
 details/genx/doc{LICENSE}@./: install = doc/GENX-LICENSE
 
 # For pre-releases use the complete version to make sure they cannot be used
