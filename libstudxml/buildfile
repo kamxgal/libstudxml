@@ -48,8 +48,8 @@ lib{studxml}: cc.export.poptions = "-I$out_root" "-I$src_root"
 liba{studxml}: cc.export.poptions += -DLIBSTUDXML_STATIC
 libs{studxml}: cc.export.poptions += -DLIBSTUDXML_SHARED
 
-# Install into the libstudxml/ subdirectory of, say, /usr/include/. Bold, I
-# know.
+# Install into the libstudxml/ subdirectory of, say, /usr/include/ recreating
+# subdirectories. Bold, I know.
 #
-install.include = $install.include/libstudxml/
-install.include.subdirs = true # Recreate subdirectories.
+{hxx ixx txx}{*}: install         = include/libstudxml/
+{hxx ixx txx}{*}: install.subdirs = true
