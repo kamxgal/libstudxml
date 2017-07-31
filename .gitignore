@@ -13,6 +13,7 @@
 *.exe
 *.exe.dlls/
 *.exe.manifest
+*.pc
 
 # Generated documentation.
 #
