@@ -51,5 +51,5 @@ libs{studxml}: cc.export.poptions += -DLIBSTUDXML_SHARED
 # Install into the libstudxml/ subdirectory of, say, /usr/include/ recreating
 # subdirectories. Bold, I know.
 #
-{hxx ixx txx}{*}: install         = include/libstudxml/
-{hxx ixx txx}{*}: install.subdirs = true
+{h hxx ixx txx}{*}: install         = include/libstudxml/
+{h hxx ixx txx}{*}: install.subdirs = true
