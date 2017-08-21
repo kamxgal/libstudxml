@@ -24,7 +24,6 @@ details/expat/doc{LICENSE}@./: install = doc/EXPAT-LICENSE
 lib{studxml}: details/genx/{h{*} c{*} doc{LICENSE README}}
 
 hxx{version}: in{version} $src_root/file{manifest}
-hxx{version}: dist = true
 
 details/genx/doc{README}@./:  install = false
 details/genx/doc{LICENSE}@./: install = doc/GENX-LICENSE
