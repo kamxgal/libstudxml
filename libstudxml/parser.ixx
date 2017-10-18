@@ -215,16 +215,16 @@ namespace xml
   inline void parser::
   next_expect (event_type e, const qname_type& qn, content_type c)
   {
-    next_expect (e, qn);
     assert (e == start_element);
+    next_expect (e, qn);
     content (c);
   }
 
   inline void parser::
   next_expect (event_type e, const std::string& n, content_type c)
   {
-    next_expect (e, std::string (), n);
     assert (e == start_element);
+    next_expect (e, std::string (), n);
     content (c);
   }
 
@@ -233,8 +233,8 @@ namespace xml
                const std::string& ns, const std::string& n,
                content_type c)
   {
-    next_expect (e, ns, n);
     assert (e == start_element);
+    next_expect (e, ns, n);
     content (c);
   }
 }
