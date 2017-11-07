@@ -6,9 +6,9 @@ license: MIT
 tags: c++, xml, parser, serializer, streaming, pull, conforming
 description-file: README
 changes-file: NEWS
-url: http://www.codesynthesis.com/projects/libstudxml/
-doc-url: http://www.codesynthesis.com/projects/libstudxml/doc/intro.xhtml
-src-url: http://scm.codesynthesis.com/?p=libstudxml/libstudxml.git\;a=tree
+url: https://www.codesynthesis.com/projects/libstudxml/
+doc-url: https://www.codesynthesis.com/projects/libstudxml/doc/intro.xhtml
+src-url: https://git.codesynthesis.com/cgit/libstudxml/libstudxml/
 email: studxml-users@codesynthesis.com; Mailing list
 build-email: builds@codesynthesis.com
 requires: c++11
