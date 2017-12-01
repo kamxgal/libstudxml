@@ -42,6 +42,15 @@ if $version.pre_release
 else
   lib{studxml}: bin.lib.version = @"-$version.major.$version.minor"
 
+if ($c.class == 'gcc')
+{
+  # Disable warnings that pop up with -Wextra (e.g, -fimplicit-fallthrough)
+  # in C implementation details.
+  #
+  details/expat/: c.coptions += -Wno-extra
+  details/genx/:  c.coptions += -Wno-extra
+}
+
 # We are a mixed C/C++ library, though C is implementatio-only, kind of: we
 # need headers but not symbols.
 #

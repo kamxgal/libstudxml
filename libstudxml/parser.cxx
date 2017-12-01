@@ -452,8 +452,8 @@ namespace xml
             pqname_ = &qname_;
             break; // No more declarations.
           }
-          // Fall through.
         }
+        // Fall through.
       case start_element:
         {
           event_ = start_namespace_decl;
@@ -497,8 +497,8 @@ namespace xml
             pvalue_ = &value_;
             break; // No more attributes.
           }
-          // Fall through.
         }
+        // Fall through.
       case start_element:
       case start_namespace_decl:
         {
@@ -531,13 +531,13 @@ namespace xml
             pqname_ = &qname_;
             break; // No more declarations.
           }
-          // Fall through.
         }
-        // The end namespace declaration comes before the end element
-        // which means it can follow pretty much any other event.
-        //
+        // Fall through.
       default:
         {
+          // The end namespace declaration comes before the end element which
+          // means it can follow pretty much any other event.
+          //
           event_ = end_namespace_decl;
           pqname_ = &end_ns_[end_ns_i_];
           return event_;
