@@ -4,7 +4,7 @@
 
 import libs = libstudxml%lib{studxml}
 
-exe{driver}: {hxx cxx}{*} $libs test{testscript}
+exe{driver}: {hxx cxx}{*} $libs testscript
 
 define xml: file
 xml{*}: extension = xml
