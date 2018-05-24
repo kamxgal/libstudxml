@@ -1,5 +1,5 @@
 // file      : libstudxml/content.hxx -*- C++ -*-
-// copyright : Copyright (c) 2013-2017 Code Synthesis Tools CC
+// copyright : Copyright (c) 2013-2018 Code Synthesis Tools CC
 // license   : MIT; see accompanying LICENSE file
 
 #ifndef LIBSTUDXML_CONTENT_HXX

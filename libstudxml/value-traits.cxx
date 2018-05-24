@@ -1,5 +1,5 @@
 // file      : libstudxml/value-traits.cxx
-// copyright : Copyright (c) 2013-2017 Code Synthesis Tools CC
+// copyright : Copyright (c) 2013-2018 Code Synthesis Tools CC
 // license   : MIT; see accompanying LICENSE file
 
 #include <libstudxml/parser.hxx>
