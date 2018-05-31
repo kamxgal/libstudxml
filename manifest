@@ -1,6 +1,6 @@
 : 1
 name: libstudxml
-version: 1.1.0-b.3
+version: 1.1.0-b.3.z
 summary: Streaming XML pull parser/serializer for modern C++
 license: MIT
 tags: c++, xml, parser, serializer, streaming, pull, conforming
