@@ -6,6 +6,6 @@
 
 # Don't install examples, tests or the INSTALL file.
 #
-dir{examples/}:  install = false
-dir{tests/}:     install = false
+examples/:       install = false
+tests/:          install = false
 doc{INSTALL}@./: install = false
