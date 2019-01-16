@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2007-2018 Code Synthesis Tools CC.
+ * Copyright (c) 2007-2019 Code Synthesis Tools CC.
  * Copyright (c) 2004 by Tim Bray and Sun Microsystems.
  *
  * For copying permission, see the accompanying COPYING file.
