@@ -3,7 +3,11 @@
 # license   : MIT; see accompanying LICENSE file
 
 define css: file
-css{*}: extension = css
-css{*}: install = doc/
+
+css{*}:
+{
+  extension = css
+  install = doc/
+}
 
 ./: doc{intro.xhtml} css{default}
