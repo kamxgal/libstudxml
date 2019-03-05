@@ -28,20 +28,14 @@ lib{studxml}: details/genx/{h{*} c{*} doc{LICENSE README}}
 # clean results in a state identical to distributed).
 #
 hxx{version}: in{version} $src_root/manifest
-hxx{version}: dist  = true
-hxx{version}: clean = ($src_root != $out_root)
+hxx{version}:
+{
+  dist  = true
+  clean = ($src_root != $out_root)
+}
 
-details/genx/doc{README}@./:  install = false
-details/genx/doc{LICENSE}@./: install = doc/GENX-LICENSE
-
-# For pre-releases use the complete version to make sure they cannot be used
-# in place of another pre-release or the final version.
+# Build options.
 #
-if $version.pre_release
-  lib{studxml}: bin.lib.version = @"-$version.project_id"
-else
-  lib{studxml}: bin.lib.version = @"-$version.major.$version.minor"
-
 if ($c.class == 'gcc')
 {
   # Disable warnings that pop up with -Wextra (e.g, -fimplicit-fallthrough)
@@ -51,19 +45,38 @@ if ($c.class == 'gcc')
   details/genx/  c.coptions += -Wno-extra
 }
 
-# We are a mixed C/C++ library, though C is implementatio-only, kind of: we
+# We are a mixed C/C++ library, though C is implementation-only, kind of: we
 # need headers but not symbols.
 #
 cc.poptions =+ "-I$out_root" "-I$src_root"
+
 obja{*}: cc.poptions += -DLIBSTUDXML_STATIC_BUILD
 objs{*}: cc.poptions += -DLIBSTUDXML_SHARED_BUILD
 
+# Export options.
+#
 lib{studxml}: cc.export.poptions = "-I$out_root" "-I$src_root"
+
 liba{studxml}: cc.export.poptions += -DLIBSTUDXML_STATIC
 libs{studxml}: cc.export.poptions += -DLIBSTUDXML_SHARED
 
-# Install into the libstudxml/ subdirectory of, say, /usr/include/ recreating
-# subdirectories. Bold, I know.
+# For pre-releases use the complete version to make sure they cannot be used
+# in place of another pre-release or the final version. See the version module
+# for details on the version.* variable values.
 #
-{h hxx ixx txx}{*}: install         = include/libstudxml/
-{h hxx ixx txx}{*}: install.subdirs = true
+if $version.pre_release
+  lib{studxml}: bin.lib.version = @"-$version.project_id"
+else
+  lib{studxml}: bin.lib.version = @"-$version.major.$version.minor"
+
+# Install into the libstudxml/ subdirectory of, say, /usr/include/
+# recreating subdirectories.
+#
+{h hxx ixx txx}{*}:
+{
+  install         = include/libstudxml/
+  install.subdirs = true
+}
+
+details/genx/doc{README}@./:  install = false
+details/genx/doc{LICENSE}@./: install = doc/GENX-LICENSE
