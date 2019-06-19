@@ -3,7 +3,7 @@ name: libstudxml
 version: 1.1.0-b.7.z
 summary: Streaming XML pull parser/serializer for modern C++
 license: MIT
-tags: c++, xml, parser, serializer, streaming, pull, conforming
+topics: C++, XML, XML parser, XML serializer
 description-file: README
 changes-file: NEWS
 url: https://www.codesynthesis.com/projects/libstudxml/
@@ -13,5 +13,5 @@ email: studxml-users@codesynthesis.com ; Mailing list
 build-email: builds@codesynthesis.com
 builds: all
 requires: c++11
-depends: * build2 >= 0.9.0
-depends: * bpkg >= 0.9.0
+depends: * build2 >= 0.11.0
+depends: * bpkg >= 0.11.0
