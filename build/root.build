@@ -13,8 +13,8 @@ txx{*}: extension = txx
 
 using c
 
-if ($cxx.class == 'msvc')
-{
+if ($cxx.target.system == 'win32-msvc')
   cc.poptions += -D_CRT_SECURE_NO_WARNINGS -D_SCL_SECURE_NO_WARNINGS
+
+if ($cxx.class == 'msvc')
   cc.coptions += /wd4251 /wd4275 /wd4800
-}
