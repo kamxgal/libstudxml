@@ -1,5 +1,4 @@
 /* file      : libstudxml/details/build2/config.h
- * copyright : Copyright (c) 2013-2019 Code Synthesis Tools CC
  * license   : MIT; see accompanying LICENSE file
  */
 

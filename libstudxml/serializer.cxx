@@ -1,5 +1,4 @@
 // file      : libstudxml/serializer.cxx
-// copyright : Copyright (c) 2013-2019 Code Synthesis Tools CC
 // license   : MIT; see accompanying LICENSE file
 
 #include <new>     // std::bad_alloc

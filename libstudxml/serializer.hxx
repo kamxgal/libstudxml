@@ -1,5 +1,4 @@
 // file      : libstudxml/serializer.hxx -*- C++ -*-
-// copyright : Copyright (c) 2013-2019 Code Synthesis Tools CC
 // license   : MIT; see accompanying LICENSE file
 
 #ifndef LIBSTUDXML_SERIALIZER_HXX

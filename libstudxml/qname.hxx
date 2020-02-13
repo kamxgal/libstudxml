@@ -1,5 +1,4 @@
 // file      : libstudxml/qname.hxx -*- C++ -*-
-// copyright : Copyright (c) 2013-2019 Code Synthesis Tools CC
 // license   : MIT; see accompanying LICENSE file
 
 #ifndef LIBSTUDXML_QNAME_HXX
