@@ -12,15 +12,18 @@ lib{studxml}: details/expat/{                                                 \
    c{xmlparse xmlrole xmltok}                                                 \
 file{ascii.h asciitab.h config.h iasciitab.h internal.h latin1tab.h nametab.h \
      utf8tab.h xmlrole.h xmltok.h xmltok_impl.h xmltok_impl.c xmltok_ns.c}    \
- doc{LICENSE README}                                                          \
+ doc{COPYING README}                                                          \
 }
 
 details/expat/doc{README}@./:  install = false
-details/expat/doc{LICENSE}@./: install = doc/EXPAT-LICENSE
+details/expat/doc{COPYING}@./: install = doc/EXPAT-LICENSE
 
 # Genx.
 #
 lib{studxml}: details/genx/{h{*} c{*} doc{LICENSE README}}
+
+details/genx/doc{README}@./:  install = false
+details/genx/doc{LICENSE}@./: install = doc/GENX-LICENSE
 
 # Include the generated version header into the distribution (so that we don't
 # pick up an installed one) and don't remove it when cleaning in src (so that
@@ -76,6 +79,3 @@ else
   install         = include/libstudxml/
   install.subdirs = true
 }
-
-details/genx/doc{README}@./:  install = false
-details/genx/doc{LICENSE}@./: install = doc/GENX-LICENSE

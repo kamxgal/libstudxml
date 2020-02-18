@@ -1,9 +1,8 @@
 /*
  * Copyright (c) 2004 by Tim Bray and Sun Microsystems.
- * Copyright (c) Code Synthesis Tools CC; see the accompanying LICENSE
- * file for details.
+ * Copyright (c) Code Synthesis Tools CC (see the LICENSE file).
  *
- * For copying permission, see the accompanying COPYING file.
+ * For copying permission, see the accompanying LICENSE file.
  */
 
 /*
