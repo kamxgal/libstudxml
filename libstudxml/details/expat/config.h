@@ -24,6 +24,7 @@
 #undef WIN32_LEAN_AND_MEAN
 
 #define HAVE_MEMMOVE 1
+#define COMPILED_FROM_DSP 1
 
 #else
 /* POSIX
