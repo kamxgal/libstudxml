@@ -7,6 +7,15 @@
 
 #define GENX_VERSION "cs-1"
 
+/* Use snprintf() unless instructed otherwise. */
+#ifndef GENX_SNPRINTF
+#  define GENX_SNPRINTF 1
+#endif
+
+#if defined(GENX_CUSTOM_ALLOC) != defined(GENX_CUSTOM_FREE)
+#  error both GENX_CUSTOM_ALLOC and GENX_CUSTOM_FREE must be defined
+#endif
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -165,7 +174,11 @@ static void * allocate(genxWriter w, size_t bytes)
   if (w->alloc)
     return (void *) (*w->alloc)(w->userData, bytes);
   else
+#ifdef GENX_CUSTOM_ALLOC
+    return (void *) GENX_CUSTOM_ALLOC(bytes);
+#else
     return (void *) malloc(bytes);
+#endif
 }
 
 static void deallocate(genxWriter w, void * data)
@@ -173,16 +186,24 @@ static void deallocate(genxWriter w, void * data)
   if (w->dealloc)
     (*w->dealloc)(w->userData, data);
   else if (w->alloc == NULL)
+#ifdef GENX_CUSTOM_FREE
+    GENX_CUSTOM_FREE(data);
+#else
     free(data);
+#endif
+
 }
 
 static utf8 copy(genxWriter w, constUtf8 from)
 {
   utf8 temp;
+  size_t sl = strlen((const char *) from);
 
-  if ((temp = (utf8) allocate(w, strlen((const char *) from) + 1)) == NULL)
+  if ((temp = (utf8) allocate(w, sl + 1)) == NULL)
     return NULL;
-  strcpy((char *) temp, (const char *) from);
+
+  memcpy(temp, from, sl);
+  temp[sl] = 0;
   return temp;
 }
 
@@ -203,7 +224,7 @@ static genxStatus growCollector(genxWriter w, collector * c, size_t size)
   if ((newSpace = (utf8) allocate(w, c->space)) == NULL)
     return GENX_ALLOC_FAILED;
 
-  strncpy((char *) newSpace, (const char *) c->buf, c->used);
+  memcpy(newSpace, c->buf, c->used);
   newSpace[c->used] = 0;
   deallocate(w, c->buf);
   c->buf = newSpace;
@@ -227,10 +248,12 @@ static genxStatus collectString(genxWriter w, collector * c, constUtf8 string)
     if ((w->status = growCollector(w, c, sl)) != GENX_SUCCESS)
       return GENX_ALLOC_FAILED;
 
-  strcpy((char *) c->buf, (const char *) string);
+  memcpy(c->buf, string, sl);
+  c->buf[sl] = 0;
   return GENX_SUCCESS;
 }
 
+/* Note: does not add the trailing '\0' (done by endCollect() call). */
 #define collectPiece(w,c,d,size) {if (((c)->used+(size))>=(c)->space){if (((w)->status=growCollector(w,c,(c)->used+(size)))!=GENX_SUCCESS) return (w)->status;}memcpy((char *)(c)->buf+(c)->used,d,size);(c)->used+=size;}
 
 /*******************************
@@ -357,7 +380,18 @@ static utf8 storePrefix(genxWriter w, constUtf8 prefix, Boolean force)
     prefix = (utf8) "xmlns";
   else
   {
-    sprintf((char *) buf, "xmlns:%s", prefix);
+    size_t pl = strlen((const char *) prefix);
+
+    if (pl > sizeof(buf) - (6 + 1))
+    {
+      w->status = GENX_BAD_NAMESPACE_NAME;
+      return NULL;
+    }
+
+    memcpy (buf, "xmlns:", 6);
+    memcpy (buf + 6, prefix, pl);
+    buf[pl + 6] = 0;
+
     prefix = buf;
   }
 
@@ -547,7 +581,11 @@ genxWriter genxNew(genxAlloc alloc, genxDealloc dealloc, void * userData)
   if (alloc)
     w = (genxWriter) (*alloc)(userData, sizeof(struct genxWriter_rec));
   else
+#ifdef GENX_CUSTOM_ALLOC
+    w = (genxWriter) GENX_CUSTOM_ALLOC(sizeof(struct genxWriter_rec));
+#else
     w = (genxWriter) malloc(sizeof(struct genxWriter_rec));
+#endif
 
   if (w == NULL)
     return NULL;
@@ -983,11 +1021,14 @@ genxNamespace genxDeclareNamespace(genxWriter w, constUtf8 uri,
   /* wasn't already declared */
   else
   {
-
     /* make a default prefix if none provided */
     if (defaultPref == NULL)
     {
+#if GENX_SNPRINTF
+      snprintf((char *) newPrefix, sizeof(newPrefix), "g%d", w->nextPrefix++);
+#else
       sprintf((char *) newPrefix, "g%d", w->nextPrefix++);
+#endif
       defaultPref = newPrefix;
     }
 
