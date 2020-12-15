@@ -19,16 +19,3 @@
 *.exe.dlls/
 *.exe.manifest
 *.pc
-
-# Generated documentation.
-#
-*.pdf
-*.ps
-
-# Generated build system files.
-#
-*-dynamic.make
-
-# Generated .gitignore files.
-#
-.gitignore
