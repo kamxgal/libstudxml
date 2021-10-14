@@ -1,17 +1,15 @@
 // file      : tests/parser/driver.cxx
 // license   : MIT; see accompanying LICENSE file
 
-#ifdef NDEBUG
-#  error tests require enabled assert(); un-define the NDEBUG macro
-#endif
-
 #include <string>
 #include <vector>
-#include <cassert>
 #include <iostream>
 #include <sstream>
 
 #include <libstudxml/parser.hxx>
+
+#undef NDEBUG
+#include <cassert>
 
 using namespace std;
 using namespace xml;

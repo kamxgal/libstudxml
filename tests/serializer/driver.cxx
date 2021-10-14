@@ -1,16 +1,14 @@
 // file      : tests/serializer/driver.cxx
 // license   : MIT; see accompanying LICENSE file
 
-#ifdef NDEBUG
-#  error tests require enabled assert(); un-define the NDEBUG macro
-#endif
-
 #include <string>
-#include <cassert>
 #include <iostream>
 #include <sstream>
 
 #include <libstudxml/serializer.hxx>
+
+#undef NDEBUG
+#include <cassert>
 
 using namespace std;
 using namespace xml;

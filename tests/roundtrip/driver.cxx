@@ -3,11 +3,13 @@
 
 #include <string>
 #include <fstream>
-#include <cassert>
 #include <iostream>
 
 #include <libstudxml/parser.hxx>
 #include <libstudxml/serializer.hxx>
+
+#undef NDEBUG
+#include <cassert>
 
 using namespace std;
 using namespace xml;
