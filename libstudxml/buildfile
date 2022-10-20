@@ -15,15 +15,15 @@ file{ascii.h asciitab.h config.h iasciitab.h internal.h latin1tab.h nametab.h \
  doc{COPYING README}                                                          \
 }
 
-details/expat/doc{README}@./:  install = false
-details/expat/doc{COPYING}@./: install = doc/EXPAT-LICENSE
+details/expat/doc{README}@details/expat/:  install = false
+details/expat/doc{COPYING}@details/expat/: install = doc/EXPAT-LICENSE
 
 # Genx.
 #
 lib{studxml}: details/genx/{h{*} c{*} doc{LICENSE README}}
 
-details/genx/doc{README}@./:  install = false
-details/genx/doc{LICENSE}@./: install = doc/GENX-LICENSE
+details/genx/doc{README}@details/genx/:  install = false
+details/genx/doc{LICENSE}@details/genx/: install = doc/GENX-LICENSE
 
 # Include the generated version header into the distribution (so that we don't
 # pick up an installed one) and don't remove it when cleaning in src (so that
