@@ -2,7 +2,6 @@
 // license   : MIT; see accompanying LICENSE file
 
 #include <cassert>
-#include <iostream>
 
 #include <libstudxml/value-traits.hxx>
 
@@ -37,7 +36,6 @@ namespace xml
       : startpos_ (is.tellg()), size_ (size), iname_ (iname), feature_ (f)
   {
     data_ = &is;
-    std::cout << "parser ctor is = [" << startpos_ << ", " << startpos_ + size_ << "]" << std::endl;
     init ();
   }
 
