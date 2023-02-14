@@ -2,6 +2,7 @@
 // license   : MIT; see accompanying LICENSE file
 
 #include <cassert>
+#include <iostream>
 
 #include <libstudxml/value-traits.hxx>
 
@@ -32,10 +33,21 @@ namespace xml
   // parser
   //
   inline parser::
-  parser (std::istream& is, const std::string& iname, feature_type f)
-      : size_ (0), iname_ (iname), feature_ (f)
+  parser (std::istream& is, size_t size, const std::string& iname, feature_type f)
+      : startpos_ (is.tellg()), size_ (size), iname_ (iname), feature_ (f)
   {
-    data_.is = &is;
+    data_ = &is;
+    std::cout << "parser ctor is = [" << startpos_ << ", " << startpos_ + size_ << "]" << std::endl;
+    init ();
+  }
+
+  // parser
+  //
+  inline parser::
+  parser (std::istream& is, const std::string& iname, feature_type f)
+      : startpos_ (is.tellg()), size_ (0), iname_ (iname), feature_ (f)
+  {
+    data_ = &is;
     init ();
   }
 
@@ -44,11 +56,11 @@ namespace xml
           std::size_t size,
           const std::string& iname,
           feature_type f)
-      : size_ (size), iname_ (iname), feature_ (f)
+      : startpos_ (0), size_ (size), iname_ (iname), feature_ (f)
   {
     assert (data != 0 && size != 0);
 
-    data_.buf = data;
+    data_ = data;
     init ();
   }
 

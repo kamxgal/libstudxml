@@ -98,6 +98,19 @@ namespace xml
                                                 receive_attributes_map;
 
     // Parse std::istream. Input name is used in diagnostics to identify
+    // the document being parsed. Constuctor should be used if size of data
+    // to be read from input stream is known.
+    //
+    // If stream exceptions are enabled then std::ios_base::failure
+    // exception is used to report io errors (badbit and failbit).
+    // Otherwise, those are reported as the parsing exception.
+    //
+    parser (std::istream&,
+            size_t size,
+            const std::string& input_name,
+            feature_type = receive_default);
+
+    // Parse std::istream. Input name is used in diagnostics to identify
     // the document being parsed.
     //
     // If stream exceptions are enabled then std::ios_base::failure
@@ -162,6 +175,11 @@ namespace xml
 
     event_type
     peek ();
+
+    size_t
+    size() const { return size_; }
+
+    size_t parsed_bytes() const;
 
     // Return the even that was last returned by the call to next() or
     // peek().
@@ -371,14 +389,35 @@ namespace xml
     handle_error ();
 
   private:
-    // If size_ is 0, then data is std::istream. Otherwise, it is a buffer.
-    //
-    union
+    struct
     {
-      std::istream* is;
-      const void* buf;
+        void operator=(std::istream* is) {
+            this->is = is;
+        }
+        void operator=(const void* buf) {
+            this->buf = buf;
+        }
+
+        bool has_is() const {
+            return !!is;
+        }
+
+        bool has_buf() const {
+            return !has_is();
+        }
+
+        std::istream* get_is() { return is; }
+        const void* get_buf() { return buf; }
+
+        std::istream* const get_is() const { return is; }
+        const void* const get_buf() const { return buf; }
+
+    private:
+        std::istream* is = nullptr;
+        const void* buf = nullptr;
     } data_;
 
+    std::size_t startpos_;
     std::size_t size_;
 
     const std::string iname_;

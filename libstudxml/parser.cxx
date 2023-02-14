@@ -291,6 +291,14 @@ namespace xml
                      qname_type (ns, n).string () + "' expected");
   }
 
+  size_t parser::parsed_bytes() const
+  {
+      if (data_.has_is()) {
+          return static_cast<size_t>(data_.get_is()->tellg()) - startpos_;
+      }
+      return 0;  // value is not tracked for buffer
+  }
+
   string parser::
   element ()
   {
@@ -618,10 +626,10 @@ namespace xml
     XML_Status s;
     do
     {
-      if (size_ != 0)
+      if (data_.has_buf())
       {
         s = XML_Parse (p_,
-                       static_cast <const char*> (data_.buf),
+                       static_cast <const char*> (data_.get_buf()),
                        static_cast <int> (size_),
                        true);
 
@@ -641,7 +649,7 @@ namespace xml
         // Temporarily unset the exception failbit. Also clear the fail bit
         // when we reset the old state if it was caused by eof.
         //
-        istream& is (*data_.is);
+        istream& is (*data_.get_is());
         {
           stream_exception_controller sec (is);
           is.read (b, static_cast<streamsize> (cap));
