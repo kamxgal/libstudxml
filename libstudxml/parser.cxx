@@ -293,8 +293,13 @@ namespace xml
 
   size_t parser::parsed_bytes() const
   {
-      if (data_.has_is()) {
-          return static_cast<size_t>(data_.get_is()->tellg()) - startpos_;
+      if (data_.has_is())
+      {
+          const auto cur = data_.get_is()->tellg();
+          if (data_.get_is()->fail()) {
+              return 0;
+          }
+          return static_cast<size_t>(cur) - startpos_;
       }
       return 0;  // value is not tracked for buffer
   }
